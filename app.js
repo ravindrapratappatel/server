@@ -32,6 +32,28 @@ app.post("/newuser", (req, res) => {
     });
 });
 
+app.post("/login", async(req, res) => {
+  const {email, password }= req.body;
+  
+  try {
+    const findResult = await User.findOne({ email: email, password: password });
+    const data = "New user created Successfully";
+    //res.status(200).send(findResult);
+    console.log(findResult);
+    if (findResult) {
+        res.status(200).send("accessgiven");
+    }
+    else {
+        res.status(200).send("accessdenied");
+    }
+
+} catch (error) {
+    res.status(409).send("accessdenied");
+
+}
+
+});
+
 app.get('/user', (req, res)=>{
     
     User.find().then((result)=>{
