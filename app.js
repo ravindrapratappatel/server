@@ -4,7 +4,7 @@ require("./db/connection");
 
 const User = require("./models/user");
 const app = express();
-// app.use(express.json);
+ app.use(express.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
 app.get('/', (req, res)=>{
