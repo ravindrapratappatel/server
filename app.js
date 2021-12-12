@@ -27,7 +27,7 @@ app.post("/newuser", (req, res) => {
       console.log("saved");
     })
     .catch((e) => {
-      res.send(e);
+      res.send("Error");
       console.log(e);
     });
 });
@@ -38,7 +38,7 @@ app.post("/login", async(req, res) => {
   try {
     const findResult = await User.findOne({ email: email, password: password });
     const data = "New user created Successfully";
-    //res.status(200).send(findResult);
+   
     console.log(findResult);
     if (findResult) {
         res.status(200).send("accessgiven");
